@@ -1,4 +1,4 @@
-FROM maven:3-jdk-8-alpine
+FROM maven:3-jdk-8
 LABEL maintainer="BaseX Team <basex-talk@mailman.uni-konstanz.de>"
 
 # Compile BaseX, install
