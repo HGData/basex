@@ -5,7 +5,10 @@ LABEL maintainer="BaseX Team <basex-talk@mailman.uni-konstanz.de>"
 COPY . /usr/src/basex/
 
 # install git as "buildnumber-maven-plugin" requires git:
-RUN apk update && apk add --no-cache git && \
+RUN apt-get update && \
+    apt-get install -y git && \
+    apt-get -y autoremove && \
+    rm -r /var/lib/apt/lists/* /var/cache/* && \
     cd /usr/src/basex && \
     mvn clean install -DskipTests && \
     ln -s /usr/src/basex/basex-*/etc/* /usr/local/bin &&\
