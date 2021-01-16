@@ -12,10 +12,11 @@ RUN apt-get update && \
     cd /usr/src/basex && \
     mvn clean install -DskipTests && \
     ln -s /usr/src/basex/basex-*/etc/* /usr/local/bin &&\
-    adduser --home /srv --disabled-password --disabled-login --uid 1984 basex && \
+    yes "" | adduser --home /srv --disabled-password --disabled-login --uid 1984 basex && \
     mkdir -p /srv/.m2 /srv/basex/data /srv/basex/repo /srv/basex/webapp && \
     cp -r /usr/src/basex/basex-api/src/main/webapp/WEB-INF /srv/basex/webapp && \
     chown -R basex /srv
+    
 USER basex
 ENV MAVEN_CONFIG=/srv/.m2
 
